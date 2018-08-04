@@ -1,8 +1,7 @@
 package com.titouan.next.movilenext_lesson4_loginapp
 
 import android.support.test.espresso.Espresso.onView
-import android.support.test.espresso.action.ViewActions.click
-import android.support.test.espresso.action.ViewActions.typeText
+import android.support.test.espresso.action.ViewActions.*
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.rule.ActivityTestRule
@@ -20,7 +19,7 @@ class LoginActivityExpressoTest {
 
     @Test
     fun sendButton_shouldWriteName() {
-        onView(withHint(R.string.email_hint)).perform(typeText("admin@admin.com"))
+        onView(withHint(R.string.email_hint)).perform(typeText("admin@admin.com"), closeSoftKeyboard())
 
         onView(withText(R.string.login_button)).perform(click())
 
@@ -30,7 +29,7 @@ class LoginActivityExpressoTest {
 
     @Test
     fun sendButton_shouldShowErrorWithWrongLogin() {
-        onView(withHint(R.string.email_hint)).perform(typeText("other@admin.com"))
+        onView(withHint(R.string.email_hint)).perform(typeText("other@admin.com"), closeSoftKeyboard())
 
         onView(withText(R.string.login_button)).perform(click())
 
